@@ -11,6 +11,16 @@ export function BackgroundBoxesDemo() {
       paragraph:
         "We’re here to help. Reach out for support, inquiries, or partnerships.",
     },
+    "/testimonial": {
+      heading: "Get in Touch With Us",
+      paragraph:
+        "We’re here to help. Reach out for support, inquiries, or partnerships.",
+    },
+    "/feedback": {
+      heading: "Get in Touch With Us",
+      paragraph:
+        "We’re here to help. Reach out for support, inquiries, or partnerships.",
+    },
     "/about": {
       heading: "About Our Journey",
       paragraph:
@@ -62,7 +72,6 @@ export function BackgroundBoxesDemo() {
     "/faq": {
       heading: "Frequently Ask Question",
     },
-    
   };
 
   // Fallback for dynamic paths like /services/catering

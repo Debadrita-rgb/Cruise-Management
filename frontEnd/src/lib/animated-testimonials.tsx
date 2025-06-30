@@ -30,6 +30,13 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
   };
+
+  if (!Array.isArray(testimonials) || testimonials.length === 0) {
+    return (
+      <div className="text-center text-white">No testimonials available.</div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-sm px-4 py-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
       <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
@@ -38,7 +45,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
-                  key={testimonial.src}
+                  key={testimonial.image}
                   initial={{
                     opacity: 0,
                     scale: 0.9,
@@ -68,7 +75,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
                   className="absolute inset-0 origin-bottom"
                 >
                   <img
-                    src={testimonial.src}
+                    src={testimonial.profileimage}
                     alt={testimonial.name}
                     width={500}
                     height={500}
@@ -100,14 +107,14 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-2xl font-bold text-black dark:text-white">
+            <h3 className="text-2xl font-bold text-white">
               {testimonials[active].name}
             </h3>
             <p className="text-sm text-white">
               {testimonials[active].designation}
             </p>
             <motion.p className="mt-8 text-lg text-white">
-              {testimonials[active].quote.split(" ").map((word, index) => (
+              {testimonials[active].message.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{

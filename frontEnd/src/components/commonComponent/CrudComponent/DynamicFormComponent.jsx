@@ -94,7 +94,12 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-const DynamicForm = ({ fields, onSubmit, submitText = "Submit" }) => {
+const DynamicForm = ({
+  fields,
+  onSubmit,
+  submitText = "Submit",
+  showSubmit = true,
+}) => {
   const [formData, setFormData] = React.useState(() =>
     fields.reduce((acc, field) => {
       acc[field.name] = field.value || "";
@@ -216,14 +221,16 @@ const DynamicForm = ({ fields, onSubmit, submitText = "Submit" }) => {
         })}
       </div>
 
-      <div className="mt-8 text-center">
-        <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg cursor-pointer"
-        >
-          {submitText}
-        </button>
-      </div>
+      {showSubmit && (
+        <div className="mt-8 text-center">
+          <button
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg cursor-pointer"
+          >
+            {submitText}
+          </button>
+        </div>
+      )}
     </form>
   );
 };

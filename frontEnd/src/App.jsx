@@ -107,8 +107,22 @@ import SupervisorProfile from "./pages/supervisor_pages/SupervisorProfile/Superv
 import AdminviewGallery from "./pages/admin_pages/common/Gallery/viewGallery.jsx";
 import AdminaddGallery from "./pages/admin_pages/common/Gallery/addGallery.jsx";
 
-// conatct
+// Admin conatct
 import AdminContact from "./pages/admin_pages/common/Contact/contact.jsx";
+import AdminViewContactDetails from "./pages/admin_pages/common/Contact/ViewContactDetails.jsx";
+
+// Admin conatct
+import AdminFeedback from "./pages/admin_pages/common/Feedback/Feedback.jsx";
+import AdminViewFeedbackDetails from "./pages/admin_pages/common/Feedback/Viewfeedbackdetails.jsx";
+
+// Admin conatct
+import AdminTestimonial from "./pages/admin_pages/common/Testimonial/Testimonial.jsx";
+import AdminViewTestimonialDetails from "./pages/admin_pages/common/Testimonial/Viewtestimonialdetails.jsx";
+
+//user testimonial
+import UserTestimonial from "./pages/voyages_pages/Testimonial/Testimonial.jsx"
+// user feedback
+import UserFeedback from "./pages/voyages_pages/Feedback/Feedback.jsx";
 
 // Login Page of Admin,Manager,Head Cook,Supervisor
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -134,6 +148,9 @@ const App = () => {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/testimonial" element={<UserTestimonial />} />
+            <Route path="/feedback" element={<UserFeedback />} />
+
             <Route path="/faq" element={<Faq />} />
             <Route path="/services/catering" element={<Catering />} />
             <Route path="services/stationary" element={<Stationary />} />
@@ -148,7 +165,6 @@ const App = () => {
               element={<FitnessCategory />}
             />
             <Route path="services/facilities/fitness/" element={<Fitness />} />
-
             <Route path="cart" element={<MyCart />} />
             <Route path="order" element={<MyOrder />} />
             <Route path="booking" element={<MyBooking />} />
@@ -289,6 +305,22 @@ const App = () => {
 
               {/* AdminContact */}
               <Route path="view-contact" element={<AdminContact />} />
+              <Route
+                path="view-contact-details/:id"
+                element={<AdminViewContactDetails />}
+              />
+              {/* AdminFeedback */}
+              <Route path="view-feedback" element={<AdminFeedback />} />
+              <Route
+                path="view-feedback-details/:id"
+                element={<AdminViewFeedbackDetails />}
+              />
+              {/* AdminTestimonial */}
+              <Route path="view-testimonial" element={<AdminTestimonial />} />
+              <Route
+                path="view-testimonial-details/:id"
+                element={<AdminViewTestimonialDetails />}
+              />
             </Route>
           )}
 

@@ -4,31 +4,31 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const contact = () => {
-  const [contactItems, setContactItems] = useState([]);
+const feedback = () => {
+  const [feedbackItems, setFeedbackItems] = useState([]);
 
   //show all data
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-fullcontact-details", {
+    fetch("http://localhost:5000/admin/get-fullfeedback-details", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        setContactItems(data);
+        setFeedbackItems(data);
       })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
 
-  const filteredItems = (contactItems || []).map((item, index) => ({
+  const filteredItems = (feedbackItems || []).map((item, index) => ({
     Id: index + 1,
     Name: item.name,
     Email: item.email,
     id: item._id,
-    viewPath: `/admin/view-contact-details/${item._id}`,
+    viewPath: `/admin/view-feedback-details/${item._id}`,
   }));
 
   
@@ -36,7 +36,7 @@ const contact = () => {
     <div className="p-6">
       <ToastContainer position="top-right" autoClose={2000} />
       <TableComponent
-        title="Contact"
+        title="Feedback"
         columns={["Id", "Name", "Email"]}
         data={filteredItems}
         showAddButton={false}
@@ -47,4 +47,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default feedback;

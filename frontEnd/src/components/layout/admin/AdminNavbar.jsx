@@ -11,7 +11,7 @@ import logo from "../../../assets/logo.png";
 const AdminNavbar = ({ toggleSidebar, isSidebarOpen }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [admin, setAdmin] = useState({
-    name: "Loading...",
+    name: "Admin",
     role: "Admin",
     profilePic: "",
   });
@@ -77,6 +77,15 @@ const AdminNavbar = ({ toggleSidebar, isSidebarOpen }) => {
     if (location.pathname.startsWith("/admin/edit-category/")) {
       return "Edit Category";
     }
+    if (location.pathname.startsWith("/admin/view-contact-details/")) {
+      return "View Contact Details";
+    }
+    if (location.pathname.startsWith("/admin/view-testimonial/")) {
+      return "View Testimonial Details";
+    }
+    if (location.pathname.startsWith("/admin/view-feedback-details/")) {
+      return "View Feedback Details";
+    }
     switch (location.pathname) {
       case "/admin/facilities":
         return "Facilities";
@@ -90,6 +99,10 @@ const AdminNavbar = ({ toggleSidebar, isSidebarOpen }) => {
         return "Add Category";
       case "/admin/view-contact":
         return "View Contact";
+      case "/admin/view-feedback":
+        return "View Feedback";
+      case "/admin/view-testimonial":
+        return "View Testimonial";
 
       case "/admin/view-gallery":
         return "View Gallery";
@@ -184,12 +197,12 @@ const AdminNavbar = ({ toggleSidebar, isSidebarOpen }) => {
 
         {dropdownOpen && (
           <div className="absolute right-4 w-56 bg-gray-200 text-black shadow-xl rounded-md py-2 top-16 p-4 z-50">
-            <Link
+            {/* <Link
               to="/admin/profile"
               className="block px-4 py-2 hover:bg-gray-300 mt-2 text-sm p-2 rounded-lg cursor-pointer"
             >
               My Profile
-            </Link>
+            </Link> */}
             <button
               onClick={handleLogout}
               className="block w-full text-left px-4 py-2 hover:bg-gray-300 cursor-pointer"

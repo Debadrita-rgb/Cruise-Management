@@ -15,8 +15,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="contact" className="hover:none">
+                <Link to="/contact" className="hover:none">
                   Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/feedback" className="hover:none">
+                  Feedback
+                </Link>
+              </li>
+              <li>
+                <Link to="/testimonial" className="hover:none">
+                  Testimonial
                 </Link>
               </li>
             </ul>
@@ -71,21 +81,36 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">FOLLOW US</h3>
             <div className="flex space-x-4 ms-35">
-              <Link to="#" aria-label="Facebook" className="hover:opacity-75">
+              <Link
+                to="https://www.facebook.com/"
+                aria-label="Facebook"
+                className="hover:opacity-75"
+                target="_blank"
+              >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
                   alt="Facebook"
                   className="w-6 h-6"
                 />
               </Link>
-              <Link to="#" aria-label="Instagram" className="hover:opacity-75">
+              <Link
+                to="https://www.instagram.com/"
+                aria-label="Instagram"
+                className="hover:opacity-75"
+                target="_blank"
+              >
                 <img
                   src="https://cdn-icons-png.freepik.com/256/15707/15707869.png?semt=ais_hybrid"
                   alt="Instagram"
                   className="w-6 h-6"
                 />
               </Link>
-              <Link to="#" aria-label="LinkedIn" className="hover:opacity-75">
+              <Link
+                to="https://in.linkedin.com/"
+                aria-label="LinkedIn"
+                className="hover:opacity-75"
+                target="_blank"
+              >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png"
                   alt="LinkedIn"

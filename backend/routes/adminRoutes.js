@@ -15,6 +15,7 @@ const Fitness = require("../models/Fitness");
 const PartyHall = require("../models/PartyHall");
 const Gallery = require("../models/Gallery");
 const Contact = require("../models/Contact");
+const Testimonial = require("../models/Testimonial");
 
 // router.post("/signup", async (req, res) => {
 //   try {
@@ -291,6 +292,28 @@ generateCRUDRoutes("user", User);
 generateCRUDRoutes("gallery", Gallery);
 generateCRUDRoutes("contact", Contact);
 generateCRUDRoutes("category", Category);
+generateCRUDRoutes("testimonial", Testimonial);
 
+router.get(`/get-fullcontact-details`, jwtAuthMiddleware, async (req, res) => {
+  try {
+    const items = await Contact.find({status: "Contact"}).sort({ createdAt: -1 });
+    res.json(items);
+  } catch (error) {
+    console.error("Server Error:", error);
+    res.status(500).json({ error: "Failed to fetch items" });
+  }
+});
+
+router.get(`/get-fullfeedback-details`, jwtAuthMiddleware, async (req, res) => {
+  try {
+    const items = await Contact.find({ status: "Feedback" }).sort({
+      createdAt: -1,
+    });
+    res.json(items);
+  } catch (error) {
+    console.error("Server Error:", error);
+    res.status(500).json({ error: "Failed to fetch items" });
+  }
+});
 
 module.exports = router;

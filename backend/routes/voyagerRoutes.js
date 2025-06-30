@@ -19,6 +19,7 @@ const SlotUsageSalon = require("../models/SlotUsageSalon");
 const Gallery = require("../models/Gallery");
 const Contact = require("../models/Contact");
 const Notification = require("../models/Notification");
+const Testimonial = require("../models/Testimonial");
 
 const serviceModels = {
   salon: BeautySalon,
@@ -227,7 +228,10 @@ router.post("/order-catering", jwtAuthMiddleware, async (req, res) => {
   }
 });
 
-router.patch("/update-catering-quantity", jwtAuthMiddleware, async (req, res) => {
+router.patch(
+  "/update-catering-quantity",
+  jwtAuthMiddleware,
+  async (req, res) => {
     try {
       const { orderId, itemId, quantity } = req.body;
 
@@ -255,7 +259,8 @@ router.patch("/update-catering-quantity", jwtAuthMiddleware, async (req, res) =>
       console.error("Error updating quantity:", error);
       res.status(500).json({ error: "Server error" });
     }
-});
+  }
+);
 
 router.put("/update-status-catering", jwtAuthMiddleware, async (req, res) => {
   try {
@@ -454,27 +459,27 @@ router.post("/order-stationary", jwtAuthMiddleware, async (req, res) => {
 });
 
 router.patch("/update-quantity-stationary", async (req, res) => {
-    try {
-      const { orderId, itemId, quantity } = req.body;
+  try {
+    const { orderId, itemId, quantity } = req.body;
 
-      if (!orderId || !itemId || quantity < 1) {
-        return res.status(400).json({ error: "Invalid data" });
-      }
+    if (!orderId || !itemId || quantity < 1) {
+      return res.status(400).json({ error: "Invalid data" });
+    }
 
-      const order = await StationaryOrder.findById(orderId);
-      if (!order) {
-        return res.status(404).json({ error: "Order not found" });
-      }
+    const order = await StationaryOrder.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
 
-      const item = order.items.id(itemId);
-      if (!item) {
-        return res.status(404).json({ error: "Item not found" });
-      }
+    const item = order.items.id(itemId);
+    if (!item) {
+      return res.status(404).json({ error: "Item not found" });
+    }
 
-      item.quantity = quantity;
-      await order.save()
+    item.quantity = quantity;
+    await order.save();
 
-      res.json({ message: "Quantity updated", item });
+    res.json({ message: "Quantity updated", item });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -580,7 +585,7 @@ router.get("/get-accepted-stationary", jwtAuthMiddleware, async (req, res) => {
 //       voyagerId: req.user.id,
 //       "items.status": "AddItem",
 //     });
-    
+
 //     let stationaryCount = 0;
 //     let cateringCount = 0;
 
@@ -764,6 +769,7 @@ generateCRUDRoutes("partyHall", PartyHall);
 generateCRUDRoutes("fitness", Fitness);
 generateCRUDRoutes("salon", BeautySalon);
 generateCRUDRoutes("movie", Moviehall);
+generateCRUDRoutes("testimonial", Testimonial);
 
 // Get booked seats for a movie for a given date and timeslot
 router.get(
@@ -958,8 +964,6 @@ router.get("/get-partyhall-bookings", jwtAuthMiddleware, async (req, res) => {
   }
 });
 
-
-
 //Salon
 router.get("/get-booking-salon", jwtAuthMiddleware, async (req, res) => {
   try {
@@ -967,7 +971,7 @@ router.get("/get-booking-salon", jwtAuthMiddleware, async (req, res) => {
       voyagerId: req.user.id,
       status: "Ordered",
       type: "Salon",
-    }).sort({ createdAt: -1 });;
+    }).sort({ createdAt: -1 });
     res.json({ orders: orderedOrders });
   } catch (err) {
     console.error("Error fetching ordered orders:", err);
@@ -981,7 +985,7 @@ router.get("/get-accepted-salon", jwtAuthMiddleware, async (req, res) => {
       voyagerId: req.user.id,
       status: "Accepted",
       type: "Salon",
-    }).sort({ createdAt: -1 });;
+    }).sort({ createdAt: -1 });
 
     res.json({ orders: acceptedOrders });
   } catch (err) {
@@ -989,7 +993,6 @@ router.get("/get-accepted-salon", jwtAuthMiddleware, async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 //booking salon
 router.post("/bookings-salon", async (req, res) => {
@@ -1001,7 +1004,7 @@ router.post("/bookings-salon", async (req, res) => {
       requirements,
       status,
       salonId,
-      bookingTime, 
+      bookingTime,
       bookingdate,
       price,
     } = req.body;
@@ -1048,7 +1051,7 @@ router.post("/bookings-salon", async (req, res) => {
     // 4. Save booking
     const booking = new Booking({
       voyagerId: userId,
-      status:"Booking",
+      status: "Booking",
       type: "Salon",
       details: {
         salonId,
@@ -1079,14 +1082,12 @@ router.get("/get-salon-bookings", jwtAuthMiddleware, async (req, res) => {
       type: "Salon",
     }).sort({ createdAt: -1 });
 
-    
     res.json({ orders: bookings });
   } catch (err) {
     console.error("Error fetching salon bookings:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 //about second section
 router.get("/team/:role", async (req, res) => {
@@ -1095,7 +1096,7 @@ router.get("/team/:role", async (req, res) => {
     const regex = new RegExp(`^${roleParam}$`, "i");
 
     const teamMembers = await User.find({ role: regex })
-      .sort({ createdAt: -1 }) 
+      .sort({ createdAt: -1 })
       .limit(4);
 
     res.status(200).json({
@@ -1111,7 +1112,7 @@ router.get("/team/:role", async (req, res) => {
 //Gallery
 router.get("/get-gallery", async (req, res) => {
   try {
-    const getgallery = await Gallery.find({ isActive: true }); 
+    const getgallery = await Gallery.find({ isActive: true });
     res.json(getgallery);
   } catch (err) {
     console.error("Error fetching gallery:", err);
@@ -1122,24 +1123,58 @@ router.get("/get-gallery", async (req, res) => {
 //Person want to contact
 router.post("/submit-contact", async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, message, status } = req.body;
     if (!name || !email || !message) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
-    const newContact = new Contact({ name, email, message });
+    const newContact = new Contact({ name, email, message, status });
     await newContact.save();
 
-    res
-      .status(200)
-      .json({ success: true, message: "Message sent successfully to us. We will contact you soon" });
+    let responseMessage = "";
+
+    if (status === "Feedback") {
+      responseMessage =
+        "Thank you for your feedback. We appreciate your input and will use it to improve our services.";
+    } else if (status === "Contact") {
+      responseMessage =
+        "Message sent successfully to us. We will contact you soon.";
+    } else {
+      responseMessage = "Your message has been received.";
+    }
+
+    res.status(200).json({ success: true, message: responseMessage });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
   }
 });
 
+//Person want to testimonial
+router.post("/submit-testimonial", async (req, res) => {
+  try {
+    const { name, designation, message, profileimage } = req.body;
+    if (!name || !designation || !message || !profileimage) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
 
+    const newTestimonial = new Testimonial({
+      name,
+      designation,
+      message,
+      profileimage,
+    });
+    await newTestimonial.save();
 
+    res.status(200).json({
+      success: true,
+      message:
+        "Testimonial saved successfully but after admin approval it is showing",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 module.exports = router;

@@ -1,7 +1,7 @@
 // components/TableComponent.jsx
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
 
 const TableComponent = ({
   title,
@@ -89,22 +89,34 @@ const TableComponent = ({
                   {showActionColumn && (
                     <td className="px-4 py-2 border text-center border-gray-200">
                       <div className="flex items-center justify-center gap-1">
-                        {row.editPath && (
+                        {row.viewPath ? (
                           <Link
-                            to={`${row.editPath || `/edit/${row.id}`}`}
-                            className="text-blue-600 hover:text-blue-800"
-                            title="Edit"
+                            to={row.viewPath}
+                            className="text-green-600 hover:text-green-800"
+                            title="View"
                           >
-                            <FaEdit />
+                            <FaEye />
                           </Link>
+                        ) : (
+                          <>
+                            {row.editPath && (
+                              <Link
+                                to={`${row.editPath || `/edit/${row.id}`}`}
+                                className="text-blue-600 hover:text-blue-800"
+                                title="Edit"
+                              >
+                                <FaEdit />
+                              </Link>
+                            )}
+                            <button
+                              onClick={() => handleDelete(row.id)}
+                              className="text-red-600 hover:text-red-800 cursor-pointer"
+                              title="Delete"
+                            >
+                              <FaTrash />
+                            </button>
+                          </>
                         )}
-                        <button
-                          onClick={() => handleDelete(row.id)}
-                          className="text-red-600 hover:text-red-800 cursor-pointer"
-                          title="Delete"
-                        >
-                          <FaTrash />
-                        </button>
                       </div>
                     </td>
                   )}
