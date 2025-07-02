@@ -28,7 +28,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     setLoading(true);
-    console.log(password);
+    // console.log(password);
     try {
       const response = await fetch("http://localhost:5000/common/login", {
         method: "POST",
