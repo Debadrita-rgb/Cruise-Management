@@ -37,7 +37,7 @@ import MyBookingSalon from "./pages/voyages_pages/Booking/facilities/Salon.jsx";
 //admin routes
 import AdminLayout from "./components/layout/admin/AdminLayout";
 import AdminDashboard from "./pages/admin_pages/AdminDashboard/AdminDashboard.jsx";
-import Facilities from "./pages/admin_pages/facilities/facilities.jsx";
+import Facilities from "./pages/admin_pages/facilities/Facilities.jsx";
 
 //booking Salon Service
 import ViewSalonService from "./pages/admin_pages/Booking/Salon/ViewSalonService.jsx";
