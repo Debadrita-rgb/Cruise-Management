@@ -40,13 +40,13 @@ import AdminDashboard from "./pages/admin_pages/AdminDashboard/AdminDashboard.js
 import Facilities from "./pages/admin_pages/Facilities/Facilities.jsx";
 
 //booking Salon Service
-import ViewSalonService from "./pages/admin_pages/Booking/Salon/ViewSalonService.jsx";
-import AdminaddSalonService from "./pages/admin_pages/Booking/Salon/AddSalonService.jsx";
+import ViewSalonService from "./pages/admin_pages/Booking/Salon/viewSalonService.jsx";
+import AdminaddSalonService from "./pages/admin_pages/Booking/Salon/addSalonService.jsx";
 import AdmineditSalonService from "./pages/admin_pages/Booking/Salon/editSalonService.jsx";
 
 //booking Fitness Service
-import ViewFitnessService from "./pages/admin_pages/Booking/Fitness/ViewFitnessService.jsx";
-import AdminaddFitnessService from "./pages/admin_pages/Booking/Fitness/AddFitnessService.jsx";
+import ViewFitnessService from "./pages/admin_pages/Booking/Fitness/viewFitnessService.jsx";
+import AdminaddFitnessService from "./pages/admin_pages/Booking/Fitness/addFitnessService.jsx";
 import AdmineditFitnessService from "./pages/admin_pages/Booking/Fitness/editFitnessService.jsx";
 
 //booking Moviehall Service
