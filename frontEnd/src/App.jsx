@@ -30,7 +30,7 @@ import MyCart from "./pages/voyages_pages/Cart/Cart";
 import MyOrder from "./pages/voyages_pages/Order/Order";
 import MyBooking from "./pages/voyages_pages/Booking/Booking";
 import MyBookingMovies from "./pages/voyages_pages/Booking/facilities/Movie.jsx";
-import MyBookingPartyhall from "./pages/voyages_pages/Booking/facilities/partyhall.jsx";
+import MyBookingPartyhall from "./pages/voyages_pages/Booking/facilities/Partyhall.jsx";
 import MyBookingFitness from "./pages/voyages_pages/Booking/facilities/Fitness.jsx";
 import MyBookingSalon from "./pages/voyages_pages/Booking/facilities/Salon.jsx";
 
