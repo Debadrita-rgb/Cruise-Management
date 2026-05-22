@@ -81,7 +81,7 @@ import AdmineditCategory from "./pages/admin_pages/Category/editCategory.jsx";
 
 //Manager
 import ManagerLayout from "./components/layout/manager/ManagerLayout";
-import ManagerDashboard from "./pages/Manager_pages/ManagerDashboard/ManagerDashboard.jsx";
+import ManagerDashboard from "./pages/manager_pages/ManagerDashboard/ManagerDashboard.jsx";
 import ManagerBookedPartyhall from "./pages/manager_pages/bookedPartyhall/bookedPartyhall.jsx";
 import ManagerBookedFitness from "./pages/manager_pages/bookedFitness/bookedFitness.jsx"
 import ManagerBookedMovies from "./pages/manager_pages/bookedMovies/bookedMovies.jsx";
