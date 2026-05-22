@@ -19,7 +19,7 @@ import SalonCategory from "./pages/voyages_pages/services/facilities/salon/salon
 import Salon from "./pages/voyages_pages/services/facilities/salon/salon.jsx";
 import FitnessCategory from "./pages/voyages_pages/services/facilities/fitness/fitnesscategory.jsx";
 import Fitness from "./pages/voyages_pages/services/facilities/fitness/fitness.jsx"
-import Partyhall from "./pages/voyages_pages/services/facilities/partyhall/Partyhall";
+import Partyhall from "./pages/voyages_pages/services/facilities/partyHall/partyHall.jsx";
 import BookPartyhallForm from "./components/voyagesComponents/services/facilities/partyHall/BookPartyhallForm.jsx";
 import BooksalonForm from "./components/voyagesComponents/services/facilities/salon/BooksalonForm.jsx";
 import BookFitnessForm from "./components/voyagesComponents/services/facilities/fitness/BookFitnessForm.jsx";
