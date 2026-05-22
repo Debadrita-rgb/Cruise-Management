@@ -3,6 +3,7 @@ import TableComponent from "../../../../components/commonComponent/CrudComponent
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../config";
 
 const Stationary = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,7 +13,7 @@ const Stationary = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-stationary-item", {
+    fetch(`${BASE_URL}/admin/get-stationary-item`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -43,7 +44,7 @@ const Stationary = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-stationary-item-status/${id}`,
+        `${BASE_URL}/admin/toggle-stationary-item-status/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -83,7 +84,7 @@ const Stationary = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/delete-stationary-item/${id}`,
+        `${BASE_URL}/admin/delete-stationary-item/${id}`,
         {
           method: "DELETE",
           headers: {

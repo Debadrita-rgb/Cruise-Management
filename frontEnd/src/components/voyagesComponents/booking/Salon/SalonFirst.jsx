@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Disclosure } from "@headlessui/react";
 import { FaChevronUp } from "react-icons/fa";
+import BASE_URL from "../../../../../config";
 
 const SalonFirst = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/voyager/get-salon-bookings", {
+    fetch(`${BASE_URL}/voyager/get-salon-bookings`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

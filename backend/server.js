@@ -10,11 +10,15 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // or whatever your frontend port is
+    origin: [
+      "http://localhost:5173", 
+      "https://cruise-management-frontend.onrender.com"
+    ],
     credentials: true,
   })
 );
 app.use(express.json());
+app.use(express.text()); 
 
 const PORT = process.env.PORT || 5000;
 

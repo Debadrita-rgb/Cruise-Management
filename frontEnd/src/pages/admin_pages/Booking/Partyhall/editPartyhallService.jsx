@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../config";
 import DynamicForm from "../../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 
 const EditPartyhall = () => {
@@ -32,7 +33,7 @@ const [images, setImages] = useState([""]);
   useEffect(() => {
     if (!partyhallId) return;
 
-    fetch(`http://localhost:5000/admin/get-single-partyhall/${partyhallId}`, {
+    fetch(`${BASE_URL}/admin/get-single-partyhall/${partyhallId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -58,7 +59,7 @@ const [images, setImages] = useState([""]);
         images,
       };
       const res = await fetch(
-        `http://localhost:5000/admin/update-partyhall/${partyhallId}`,
+        `${BASE_URL}/admin/update-partyhall/${partyhallId}`,
         {
           method: "PUT",
           headers: {

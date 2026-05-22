@@ -6,7 +6,7 @@ const jsonwebtoken = require("../middleware/auth")("MANAGER");
 const { generateToken, jwtAuthMiddleware } = require("../middleware/jwt");
 const PartyHall = require("../models/PartyHall");
 const Moviehall = require("../models/Moviehall");
-const User = require("../models/User")
+const User = require("../models/user")
 const Notification = require("../models/Notification");
 
 router.get("/dashboard", jwtAuthMiddleware, async (req, res) => {

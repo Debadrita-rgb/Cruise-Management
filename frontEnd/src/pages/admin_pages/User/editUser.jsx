@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../components/commonComponent/CrudComponent/DynamicFormComponent";
+import BASE_URL from "../../../../config";
 
 const EditUser = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const EditUser = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:5000/admin/get-single-user/${id}`, {
+    fetch(`${BASE_URL}/admin/get-single-user/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -23,7 +24,7 @@ const EditUser = () => {
   const handleSubmit = async (formData) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/admin/update-user/${id}`, {
+      const res = await fetch(`${BASE_URL}/admin/update-user/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

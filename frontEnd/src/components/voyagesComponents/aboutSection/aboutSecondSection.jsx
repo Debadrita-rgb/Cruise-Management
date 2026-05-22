@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import BASE_URL from "../../../../config";
 
 const roles = ["Manager", "HeadCook", "Supervisor"];
 
@@ -11,7 +12,7 @@ const aboutSecondSection = () => {
   const fetchTeam = async (role) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/voyager/team/${encodeURIComponent(role)}`
+        `${BASE_URL}/voyager/team/${encodeURIComponent(role)}`
       );
       setTeamData((prev) => ({
         ...prev,

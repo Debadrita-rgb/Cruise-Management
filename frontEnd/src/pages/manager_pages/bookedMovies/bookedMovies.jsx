@@ -3,6 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState, useEffect } from "react";
 import { Disclosure } from "@headlessui/react";
 import { FaChevronUp } from "react-icons/fa";
+import BASE_URL from "../../../../config";
 
 const BookedMovies = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -11,7 +12,7 @@ const BookedMovies = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/manager/get-booked-movies", {
+    fetch(`${BASE_URL}/manager/get-booked-movies`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

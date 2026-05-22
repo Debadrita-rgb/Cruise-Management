@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../config";
 import DynamicForm from "../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 
 const AddUser = () => {
@@ -26,7 +27,7 @@ const AddUser = () => {
     //   data.isActive = true;
     // }
     try {
-      const res = await fetch("http://localhost:5000/admin/add-user", {
+      const res = await fetch(`${BASE_URL}/admin/add-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

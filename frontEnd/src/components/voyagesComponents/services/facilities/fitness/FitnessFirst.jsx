@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import BASE_URL from "../../../../../../config";
 
 export const FitnessFirst = () => {
 
@@ -9,7 +10,7 @@ export const FitnessFirst = () => {
     useEffect(() => {
       const token = localStorage.getItem("token");
   
-      fetch("http://localhost:5000/admin/get-fitnesscategory-active", {
+      fetch(`${BASE_URL}/admin/get-fitnesscategory-active`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

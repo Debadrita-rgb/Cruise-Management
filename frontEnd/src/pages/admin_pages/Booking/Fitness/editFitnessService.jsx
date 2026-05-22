@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import BASE_URL from "../../../../../config";
 import DynamicForm from "../../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 
 // MUI Time Picker
@@ -28,7 +29,7 @@ const EditFitnessService = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/admin/get-single-fitness/${serviceId}`,
+          `${BASE_URL}/admin/get-single-fitness/${serviceId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -97,7 +98,7 @@ const EditFitnessService = () => {
       };
 
       const res = await axios.put(
-        `http://localhost:5000/admin/update-fitness/${serviceId}`,
+        `${BASE_URL}/admin/update-fitness/${serviceId}`,
         updatedData,
         {
           headers: {

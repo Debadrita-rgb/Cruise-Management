@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../config";
 import DynamicForm from "../../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 
 const AddPartyhall = () => {
@@ -46,7 +47,7 @@ const AddPartyhall = () => {
         images,
       };
       await axios.post(
-        "http://localhost:5000/admin/add-partyhall",
+        `${BASE_URL}/admin/add-partyhall`,
         dataToSubmit,
         {
           headers: {

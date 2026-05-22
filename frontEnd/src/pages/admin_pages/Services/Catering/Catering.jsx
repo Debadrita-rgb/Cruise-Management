@@ -3,6 +3,7 @@ import TableComponent from "../../../../components/commonComponent/CrudComponent
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../config";
 
 const Catering = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,7 +13,7 @@ const Catering = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-food-item", {
+    fetch(`${BASE_URL}/admin/get-food-item`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -42,7 +43,7 @@ const Catering = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-food-item-status/${id}`,
+        `${BASE_URL}/admin/toggle-food-item-status/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -82,7 +83,7 @@ const Catering = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/delete-food-item/${id}`,
+        `${BASE_URL}/admin/delete-food-item/${id}`,
         {
           method: "DELETE",
           headers: {

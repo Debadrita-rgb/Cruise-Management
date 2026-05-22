@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Disclosure } from "@headlessui/react";
 import { FaChevronUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../../../config";
 
 const bookedSalon = () => {
   const [salon, setSalon] = useState([]);
@@ -14,7 +15,7 @@ const bookedSalon = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/manager/get-booked-salon", {
+    fetch(`${BASE_URL}/manager/get-booked-salon`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -35,7 +36,7 @@ const bookedSalon = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/manager/accept-salon-order/${id}`,
+        `${BASE_URL}/manager/accept-salon-order/${id}`,
         {
           method: "PUT",
           headers: {

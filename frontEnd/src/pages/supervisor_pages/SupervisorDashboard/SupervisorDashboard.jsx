@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FiBriefcase, FiClock, FiMapPin } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../../../../config";
 
 const SupervisorDashboard = () => {
 
@@ -15,7 +16,7 @@ const SupervisorDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/supervisor/dashboardData",
+          `${BASE_URL}/supervisor/dashboardData`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

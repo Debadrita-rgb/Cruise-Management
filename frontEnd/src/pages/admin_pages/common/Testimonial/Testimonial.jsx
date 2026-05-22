@@ -3,6 +3,7 @@ import TableComponent from "../../../../components/commonComponent/CrudComponent
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../config";
 
 const testimonial = () => {
   const [testimonialItems, setTestimonialItems] = useState([]);
@@ -11,7 +12,7 @@ const testimonial = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-testimonial", {
+    fetch(`${BASE_URL}/admin/get-testimonial`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -36,7 +37,7 @@ const handleToggleActive = async (id, isActive) => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-testimonial-status/${id}`,
+        `${BASE_URL}/admin/toggle-testimonial-status/${id}`,
         {
           method: "PATCH",
           headers: {

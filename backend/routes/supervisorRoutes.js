@@ -4,7 +4,7 @@ const StationaryOrder = require("../models/StationaryOrder");
 const jsonwebtoken = require("../middleware/auth")("headcook");
 const { generateToken, jwtAuthMiddleware } = require("../middleware/jwt");
 const Stationary = require("../models/Stationary");
-const User = require("../models/User");
+const User = require("../models/user");
 const Notification = require("../models/Notification");
 
 router.get("/dashboardData", jwtAuthMiddleware, async (req, res) => {

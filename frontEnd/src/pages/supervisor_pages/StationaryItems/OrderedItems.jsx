@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Disclosure } from "@headlessui/react";
 import { FaChevronUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../../../config";
 
 const OrderedFoodItems = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,7 +15,7 @@ const OrderedFoodItems = () => {
   //show all data
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/supervisor/get-ordered-orders", {
+    fetch(`${BASE_URL}/supervisor/get-ordered-orders`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -37,7 +38,7 @@ const acceptOrder = async (id) => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/supervisor/accept-order/${id}`,
+        `${BASE_URL}/supervisor/accept-order/${id}`,
         {
           method: "PUT",
           headers: {

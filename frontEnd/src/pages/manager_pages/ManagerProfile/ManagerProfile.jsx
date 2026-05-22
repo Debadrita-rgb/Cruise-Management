@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 import { jwtDecode } from "jwt-decode";
+import BASE_URL from "../../../../config";
 
 const ManagerProfile = () => {
 
@@ -13,7 +14,7 @@ const ManagerProfile = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const manager = jwtDecode(token);
-    fetch(`http://localhost:5000/manager/get-single-manager/${manager.id}`, {
+    fetch(`${BASE_URL}/manager/get-single-manager/${manager.id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -26,7 +27,7 @@ const ManagerProfile = () => {
     const manager = jwtDecode(token);
     try {
       const res = await fetch(
-        `http://localhost:5000/manager/update-manager/${manager.id}`,
+        `${BASE_URL}/manager/update-manager/${manager.id}`,
         {
           method: "PUT",
           headers: {

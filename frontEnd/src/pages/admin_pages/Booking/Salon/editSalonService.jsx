@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 import axios from "axios";
+import BASE_URL from "../../../../../config";
 
 // MUI & Time Picker
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
@@ -27,7 +28,7 @@ const EditCatering = () => {
   useEffect(() => {
     if (!serviceId) return;
 
-    fetch(`http://localhost:5000/admin/get-single-beauty-salon/${serviceId}`, {
+    fetch(`${BASE_URL}/admin/get-single-beauty-salon/${serviceId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -77,7 +78,7 @@ const EditCatering = () => {
       };
 
       const res = await axios.put(
-        `http://localhost:5000/admin/update-beauty-salon/${serviceId}`,
+        `${BASE_URL}/admin/update-beauty-salon/${serviceId}`,
         updatedData,
         {
           headers: {

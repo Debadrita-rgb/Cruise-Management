@@ -1,11 +1,12 @@
 import { AnimatedTestimonials } from "../../../lib/animated-testimonials";
 import { useState, useEffect } from "react";
+import BASE_URL from "../../../../config";
 
 export function AnimatedTestimonialsDemo() {
   const [testimonials, setTestimonials] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:5000/voyager/get-testimonial")
+    fetch(`${BASE_URL}/voyager/get-testimonial`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not OK");
         return res.json();

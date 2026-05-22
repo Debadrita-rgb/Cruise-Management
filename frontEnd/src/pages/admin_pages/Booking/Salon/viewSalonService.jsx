@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
+import BASE_URL from "../../../../../config";
 
 const ViewSalonService = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -16,7 +17,7 @@ const ViewSalonService = () => {
   useEffect(() => {
       const token = localStorage.getItem("token");
   
-      fetch("http://localhost:5000/admin/get-saloncategory-active", {
+      fetch(`${BASE_URL}/admin/get-saloncategory-active`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,7 +49,7 @@ const ViewSalonService = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/admin/get-categorized-beauty-salon",
+        `${BASE_URL}/admin/get-categorized-beauty-salon`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -90,7 +91,7 @@ const ViewSalonService = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-beauty-salon-status/${id}`,
+        `${BASE_URL}/admin/toggle-beauty-salon-status/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -130,7 +131,7 @@ const ViewSalonService = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/delete-beauty-salon/${id}`,
+        `${BASE_URL}/admin/delete-beauty-salon/${id}`,
         {
           method: "DELETE",
           headers: {

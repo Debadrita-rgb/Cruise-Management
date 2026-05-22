@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import BASE_URL from "../../../../config";
 
 
 const signUp = () => {
@@ -24,7 +24,7 @@ const signUp = () => {
 
       try {
         const res = await axios.post(
-          "http://localhost:5000/voyager/signup",
+          `${BASE_URL}/voyager/signup`,
           formData
         );
         toast.success(res.data.message || "Signup successful!");

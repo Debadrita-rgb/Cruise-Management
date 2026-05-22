@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Disclosure } from "@headlessui/react";
 import { FaChevronUp } from "react-icons/fa";
+import BASE_URL from "../../../../../config";
 
 const FitnessFirst = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -12,7 +13,7 @@ const FitnessFirst = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/voyager/get-fitness-bookings", {
+    fetch(`${BASE_URL}/voyager/get-fitness-bookings`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
+import BASE_URL from "../../../../../config";
 
 const ViewMoviehallService = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -16,7 +17,7 @@ const ViewMoviehallService = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-moviecategory-active", {
+    fetch(`${BASE_URL}/admin/get-moviecategory-active`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -48,7 +49,7 @@ const ViewMoviehallService = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/admin/get-categorized-moviehall",
+        `${BASE_URL}/admin/get-categorized-moviehall`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -86,7 +87,7 @@ const ViewMoviehallService = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-moviehall-status/${id}`,
+        `${BASE_URL}/admin/toggle-moviehall-status/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -125,7 +126,7 @@ const ViewMoviehallService = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/delete-moviehall/${id}`,
+        `${BASE_URL}/admin/delete-moviehall/${id}`,
         {
           method: "DELETE",
           headers: {

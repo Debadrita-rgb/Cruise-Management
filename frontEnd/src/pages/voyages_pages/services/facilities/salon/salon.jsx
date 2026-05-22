@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ExpandableCardDemo from "../../../../../components/voyagesComponents/services/facilities/salon/ExpandableCardDemo";
 import { BackgroundBoxesDemo } from "../../../../../components/voyagesComponents/breadcrumbSection/slider";
+import BASE_URL from "../../../../../../config";
 
 const salon = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const salon = () => {
     if (!category) return;
 
     fetch(
-      `http://localhost:5000/voyager/get-categorized-salon?category=${encodeURIComponent(
+      `${BASE_URL}/voyager/get-categorized-salon?category=${encodeURIComponent(
         category
       )}`
     )

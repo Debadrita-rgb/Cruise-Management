@@ -7,6 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../../config";
 
 const BookFitnessForm = () => {
   const { state } = useLocation();
@@ -31,7 +32,7 @@ const BookFitnessForm = () => {
     const fetchServiceDetails = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/voyager/get-single-fitness/${serviceId}`,
+          `${BASE_URL}/voyager/get-single-fitness/${serviceId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -81,7 +82,7 @@ const BookFitnessForm = () => {
     // console.log("Get Service details: ", formattedData);
     try {
       await axios.post(
-        "http://localhost:5000/voyager/bookings-fitnessservice",
+        `${BASE_URL}/voyager/bookings-fitnessservice`,
         formattedData,
         {
           headers: {

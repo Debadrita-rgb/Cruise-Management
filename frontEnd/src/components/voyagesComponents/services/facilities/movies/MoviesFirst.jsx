@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Carousel, Card } from "../../../../../lib/apple-cards-carousel";
 import { motion } from "framer-motion";
+import BASE_URL from "../../../../../../config";
 
 export function MovieFirst() {
 
@@ -23,7 +24,7 @@ export function MovieFirst() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/voyager/get-movie")
+    fetch(`${BASE_URL}/voyager/get-movie`)
       .then((res) => res.json())
       .then((data) => {
         setMovieItems(data);

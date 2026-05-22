@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../../../../config";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -25,7 +26,7 @@ const StationerySection = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/voyager/get-stationary-item", {
+    fetch(`${BASE_URL}/voyager/get-stationary-item`, {
       // headers: {
       //   Authorization: `Bearer ${token}`,
       // },
@@ -54,7 +55,7 @@ const StationerySection = () => {
     try {
       // Step 1: Get current order
       const getOrderRes = await fetch(
-        "http://localhost:5000/voyager/get-stationary-order",
+        `${BASE_URL}/voyager/get-stationary-order`,
         {
           method: "GET",
           headers: {
@@ -90,7 +91,7 @@ const StationerySection = () => {
 
       // Step 4: Send update to server
       const res = await fetch(
-        "http://localhost:5000/voyager/order-stationary",
+        `${BASE_URL}/voyager/order-stationary`,
         {
           method: "POST",
           headers: {

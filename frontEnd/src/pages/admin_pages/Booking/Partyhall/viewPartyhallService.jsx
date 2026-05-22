@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
+import BASE_URL from "../../../../../config";
 
 const ViewPartyhallService = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,7 +14,7 @@ const ViewPartyhallService = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-partyhall", {
+    fetch(`${BASE_URL}/admin/get-partyhall`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -44,7 +45,7 @@ const ViewPartyhallService = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-partyhall-status/${id}`,
+        `${BASE_URL}/admin/toggle-partyhall-status/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -83,7 +84,7 @@ const ViewPartyhallService = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/delete-partyhall/${id}`,
+        `${BASE_URL}/admin/delete-partyhall/${id}`,
         {
           method: "DELETE",
           headers: {

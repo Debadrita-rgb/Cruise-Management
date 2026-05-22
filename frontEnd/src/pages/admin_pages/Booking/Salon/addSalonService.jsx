@@ -4,6 +4,7 @@ import DynamicForm from "../../../../components/commonComponent/CrudComponent/Dy
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../config";
 
 // MUI & Time Picker
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
@@ -60,7 +61,7 @@ const AddSalonService = () => {
         service: serviceItems,
       };
       await axios.post(
-        "http://localhost:5000/admin/add-beauty-salon",
+        `${BASE_URL}/admin/add-beauty-salon`,
         dataToSend,
         {
           headers: {

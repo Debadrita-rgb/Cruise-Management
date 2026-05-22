@@ -37,7 +37,7 @@ const Facilities = () => {
       title: "Fitness Centre",
       desc: "Train with modern equipment & reserve your time slot.",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5C0gGg0Etv38tKOQ8fKWUquaurYNYeWm_lg&s", // Gym
+        "https://images.squarespace-cdn.com/content/v1/58471a2329687f12c60955a3/1709159979051-8UDTOGLV884UYMV5LW1T/fitness-center-design.jpg?format=1000w", // Gym
       path: "/admin/booking/viewFitnessService",
     },
     {

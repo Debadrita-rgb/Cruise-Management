@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const jsonwebtoken = require("../middleware/auth")("ADMIN");
 const { generateToken, jwtAuthMiddleware } = require("../middleware/jwt");
 // Import your models (adjust paths as needed)
-const User = require("../models/User");
+const User = require("../models/user");
 const FoodItem = require("../models/FoodItem");
 const Stationary = require("../models/Stationary");
 const Moviehall = require("../models/Moviehall");

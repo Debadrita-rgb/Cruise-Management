@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Disclosure } from "@headlessui/react";
 import { FaChevronUp } from "react-icons/fa";
+import BASE_URL from "../../../../config";
 
 const AcceptedItems = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,7 +14,7 @@ const AcceptedItems = () => {
   useEffect(() => {
       const token = localStorage.getItem("token");
       console.log("Fetching accepted orders");
-      fetch("http://localhost:5000/supervisor/get-accepted-orders", {
+      fetch(`${BASE_URL}/supervisor/get-accepted-orders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

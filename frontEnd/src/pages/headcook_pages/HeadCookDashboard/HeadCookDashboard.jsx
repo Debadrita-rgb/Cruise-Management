@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FiBriefcase, FiClock, FiMapPin } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../../../../config";
 
 const HeadCookDashboard = () => {
 
@@ -15,7 +16,7 @@ const HeadCookDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/headcook/dashboardData",
+          `${BASE_URL}/headcook/dashboardData`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -7,6 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../../config";
 
 const BookPartyhallForm = () => {
   const { state } = useLocation();
@@ -42,7 +43,7 @@ const BookPartyhallForm = () => {
     // console.log("Data to be saved: ", formattedData);
     try {
       await axios.post(
-        "http://localhost:5000/voyager/bookings-partyhall",
+        `${BASE_URL}/voyager/bookings-partyhall`,
         formattedData,
         {
           headers: {

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { motion } from "framer-motion";
+import BASE_URL from "../../../../../../config";
 
 const CloseIcon = () => {
   return (
@@ -57,7 +58,7 @@ export const PartyHallModal = ({ item, onClose }) => {
     const user = jwtDecode(token);
     try {
       const res = await axios.get(
-        `http://localhost:5000/voyager/get-user-details/${user.id}`,
+        `${BASE_URL}/voyager/get-user-details/${user.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

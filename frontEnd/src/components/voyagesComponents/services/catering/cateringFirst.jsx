@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../../../../config";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -24,7 +25,7 @@ const CateringSection = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/voyager/get-food-item", {
+    fetch(`${BASE_URL}/voyager/get-food-item`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -48,7 +49,7 @@ const CateringSection = () => {
     try {
       // Step 1: Get current order
       const getOrderRes = await fetch(
-        "http://localhost:5000/voyager/get-catering-order",
+        `${BASE_URL}/voyager/get-catering-order`,
         {
           method: "GET",
           headers: {
@@ -83,7 +84,7 @@ const CateringSection = () => {
       }));
 
       // Step 4: Send update to server
-      const res = await fetch("http://localhost:5000/voyager/order-catering", {
+      const res = await fetch(`${BASE_URL}/voyager/order-catering`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

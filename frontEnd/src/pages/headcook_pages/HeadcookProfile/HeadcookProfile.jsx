@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 import { jwtDecode } from "jwt-decode";
+import BASE_URL from "../../../../config";
 
 const HeadcookProfile = () => {
 
@@ -13,7 +14,7 @@ const HeadcookProfile = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const headcook = jwtDecode(token);
-    fetch(`http://localhost:5000/headcook/get-single-headcook/${headcook.id}`, {
+    fetch(`${BASE_URL}/headcook/get-single-headcook/${headcook.id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -26,7 +27,7 @@ const HeadcookProfile = () => {
     const headcook = jwtDecode(token);
     try {
       const res = await fetch(
-        `http://localhost:5000/headcook/update-headcook/${headcook.id}`,
+        `${BASE_URL}/headcook/update-headcook/${headcook.id}`,
         {
           method: "PUT",
           headers: {

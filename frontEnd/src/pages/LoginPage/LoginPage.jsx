@@ -8,6 +8,7 @@ import { useAuth } from "../../context/AuthContext";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import logo from "../../assets/logo.png";
+import BASE_URL from "../../../config";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,7 @@ const AdminLogin = () => {
     setLoading(true);
     // console.log(password);
     try {
-      const response = await fetch("http://localhost:5000/common/login", {
+      const response = await fetch(`${BASE_URL}/common/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

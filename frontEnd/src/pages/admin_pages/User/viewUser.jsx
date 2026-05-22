@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TableComponent from "../../../components/commonComponent/CrudComponent/TableComponent";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../config";
 
 const ViewUser = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,7 +12,7 @@ const ViewUser = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/admin/get-staff-users", {
+    fetch(`${BASE_URL}/admin/get-staff-users`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -37,7 +38,7 @@ const ViewUser = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-user-status/${id}`,
+        `${BASE_URL}/admin/toggle-user-status/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -63,7 +64,7 @@ const ViewUser = () => {
     const token = localStorage.getItem("token");
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      await fetch(`http://localhost:5000/admin/delete-user/${id}`, {
+      await fetch(`${BASE_URL}/admin/delete-user/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

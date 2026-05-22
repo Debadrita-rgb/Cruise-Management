@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
+import BASE_URL from "../../../../../config";
 
 const ViewFitnessService = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -16,7 +17,7 @@ const ViewFitnessService = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-fitnesscategory-active", {
+    fetch(`${BASE_URL}/admin/get-fitnesscategory-active`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -48,7 +49,7 @@ const ViewFitnessService = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/admin/get-categorized-fitness",
+        `${BASE_URL}/admin/get-categorized-fitness`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -87,7 +88,7 @@ const ViewFitnessService = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/toggle-fitness-status/${id}`,
+        `${BASE_URL}/admin/toggle-fitness-status/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -126,7 +127,7 @@ const ViewFitnessService = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/delete-fitness/${id}`,
+        `${BASE_URL}/admin/delete-fitness/${id}`,
         {
           method: "DELETE",
           headers: {

@@ -4,11 +4,12 @@ import axios from "axios";
 import { Tab } from "@headlessui/react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import BASE_URL from "../../../../config";
 
 const TABS = ["Catering", "Stationary"];
 axios.defaults.withCredentials = true;
 
-const API_BASE_URL = "http://localhost:5000/voyager";
+const API_BASE_URL = `${BASE_URL}/voyager`;
 
 const tabToEndpoints = {
   Catering: {

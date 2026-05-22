@@ -3,6 +3,7 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../../components/commonComponent/CrudComponent/DynamicFormComponent";
+import BASE_URL from "../../../../../config";
 
 const EditCatering = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const EditCatering = () => {
   useEffect(() => {
     if (!foodId) return;
 
-    fetch(`http://localhost:5000/admin/get-single-food-item/${foodId}`, {
+    fetch(`${BASE_URL}/admin/get-single-food-item/${foodId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -35,7 +36,7 @@ const EditCatering = () => {
   const handleSubmit = async (formData) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/update-food-item/${foodId}`,
+        `${BASE_URL}/admin/update-food-item/${foodId}`,
         {
           method: "PUT",
           headers: {

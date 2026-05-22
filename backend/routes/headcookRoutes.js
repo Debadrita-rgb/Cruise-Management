@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const jsonwebtoken = require("../middleware/auth")("headcook");
 const { generateToken, jwtAuthMiddleware } = require("../middleware/jwt");
 const CateringOrder = require("../models/CateringOrder");
-const User = require("../models/User");
+const User = require("../models/user");
 const Notification = require("../models/Notification");
 
 

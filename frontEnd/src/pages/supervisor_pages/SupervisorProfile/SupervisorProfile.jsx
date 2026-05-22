@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../components/commonComponent/CrudComponent/DynamicFormComponent";
 import { jwtDecode } from "jwt-decode";
+import BASE_URL from "../../../../config";
 
 const SupervisorProfile = () => {
   const [user, setUser] = useState(null);
@@ -13,7 +14,7 @@ const SupervisorProfile = () => {
     const token = localStorage.getItem("token");
     const supervisor = jwtDecode(token);
     fetch(
-      `http://localhost:5000/supervisor/get-single-supervisor/${supervisor.id}`,
+      `${BASE_URL}/supervisor/get-single-supervisor/${supervisor.id}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -28,7 +29,7 @@ const SupervisorProfile = () => {
     const supervisor = jwtDecode(token);
     try {
       const res = await fetch(
-        `http://localhost:5000/supervisor/update-supervisor/${supervisor.id}`,
+        `${BASE_URL}/supervisor/update-supervisor/${supervisor.id}`,
         {
           method: "PUT",
           headers: {

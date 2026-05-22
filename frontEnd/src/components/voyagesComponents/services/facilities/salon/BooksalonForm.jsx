@@ -3,6 +3,7 @@ import { useLocation, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../../config";
 
 const BooksalonForm = () => {
   const { state } = useLocation();
@@ -34,7 +35,7 @@ const BooksalonForm = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:5000/voyager/get-single-salon/${salonId}`,
+          `${BASE_URL}/voyager/get-single-salon/${salonId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -60,7 +61,7 @@ const BooksalonForm = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/voyager/bookings-salon",
+        `${BASE_URL}/voyager/bookings-salon`,
         formattedData
       );
         toast.success("Booking submitted successfully!");

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PartyHallModal } from "./PartyhallModal"
 import DOMPurify from "dompurify";
+import BASE_URL from "../../../../../../config";
 
 export const PartyhallFirst = () => {
   const [stationaryItems, setStationaryItems] = useState([]);  
@@ -30,7 +31,7 @@ export const PartyhallFirst = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/voyager/get-partyHall", {
+    fetch(`http://localhost:5000/voyager/get-partyHall`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

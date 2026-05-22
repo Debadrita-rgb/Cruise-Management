@@ -2,6 +2,7 @@
   import { useLocation, useParams, useNavigate } from "react-router-dom";
   import axios from "axios";
   import moment from "moment";
+  import BASE_URL from "../../../../../../config";
 
   const BookMovieForm = () => {
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
@@ -33,7 +34,7 @@
         try {
           const token = localStorage.getItem("token");
           const res = await axios.get(
-            `http://localhost:5000/voyager/get-single-movie/${movieId}`,
+            `${BASE_URL}/voyager/get-single-movie/${movieId}`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -110,7 +111,7 @@
                   const token = localStorage.getItem("token");
                   setSelectedTimeSlot(slot);
                   const res = await axios.get(
-                    `http://localhost:5000/voyager/get-booked-seats/${movieId}?date=${selectedDate}&timeSlotId=${
+                    `${BASE_URL}/voyager/get-booked-seats/${movieId}?date=${selectedDate}&timeSlotId=${
                       slot.time || slot
                     }`,
                     { headers: { Authorization: `Bearer ${token}` } }

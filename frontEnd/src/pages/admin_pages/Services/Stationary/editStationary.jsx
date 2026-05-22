@@ -3,6 +3,7 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../../components/commonComponent/CrudComponent/DynamicFormComponent";
+import BASE_URL from "../../../../../config";
 
 const EditStationary = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const EditStationary = () => {
   useEffect(() => {
     if (!stationaryId) return;
 
-    fetch(`http://localhost:5000/admin/get-single-stationary-item/${stationaryId}`, {
+    fetch(`${BASE_URL}/admin/get-single-stationary-item/${stationaryId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -36,7 +37,7 @@ const EditStationary = () => {
   const handleSubmit = async (formData) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/update-stationary-item/${stationaryId}`,
+        `${BASE_URL}/admin/update-stationary-item/${stationaryId}`,
         {
           method: "PUT",
           headers: {

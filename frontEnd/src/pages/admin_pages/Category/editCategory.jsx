@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DynamicForm from "../../../components/commonComponent/CrudComponent/DynamicFormComponent";
+import BASE_URL from "../../../../config";
 
 const EditCategory = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const EditCategory = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:5000/admin/get-single-category/${id}`, {
+    fetch(`${BASE_URL}/admin/get-single-category/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -22,7 +23,7 @@ const EditCategory = () => {
   const handleSubmit = async (formData) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:5000/admin/update-category/${id}`, {
+      const res = await fetch(`${BASE_URL}/admin/update-category/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

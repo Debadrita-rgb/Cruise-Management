@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../../context/AuthContext";
+import BASE_URL from "../../../../config";
 
 export default function SignIn() {
   const { login } = useAuth();
@@ -31,7 +32,7 @@ export default function SignIn() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/voyager/login", {
+      const response = await axios.post(`${BASE_URL}/voyager/login`, {
         email,
         password,
       });

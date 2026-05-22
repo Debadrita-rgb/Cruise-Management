@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./SalonFirst.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import BASE_URL from "../../../../../../config";
 
 export function SalonFirst() {
   const [categories, setCategories] = useState([]);
@@ -9,7 +10,7 @@ export function SalonFirst() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/admin/get-saloncategory-active", {
+    fetch(`${BASE_URL}/admin/get-saloncategory-active`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -20,6 +21,7 @@ export function SalonFirst() {
       })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
+console.log(categories)
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },

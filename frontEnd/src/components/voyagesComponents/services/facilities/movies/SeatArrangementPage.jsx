@@ -5,6 +5,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../../../config";
 
 const SeatArrangementPage = () => {
   const { movieId } = useParams();
@@ -33,7 +34,7 @@ const SeatArrangementPage = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:5000/voyager/get-single-movie/${movieId}`,
+          `${BASE_URL}/voyager/get-single-movie/${movieId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -61,7 +62,7 @@ const SeatArrangementPage = () => {
           selectedTimeSlot.time || selectedTimeSlot.id || selectedTimeSlot;
 
         const res = await axios.get(
-          `http://localhost:5000/voyager/get-booked-seats/${movieId}`,
+          `${BASE_URL}/voyager/get-booked-seats/${movieId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
             params: {
@@ -146,7 +147,7 @@ const SeatArrangementPage = () => {
       const user = jwtDecode(token);
       axios
         .post(
-          `http://localhost:5000/voyager/book-movie`,
+          `${BASE_URL}/voyager/book-movie`,
           {
             movieId,
             date: selectedDate,

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ExpandableCardDemo from "../../../../../components/voyagesComponents/services/facilities/fitness/ExpandableCardDemo";
 import { BackgroundBoxesDemo } from "../../../../../components/voyagesComponents/breadcrumbSection/slider";
+import BASE_URL from "../../../../../../config";
 
 const fitness = () => {
   const location = useLocation();
@@ -14,7 +15,7 @@ const fitness = () => {
     if (!category) return;
 
     fetch(
-      `http://localhost:5000/voyager/get-categorized-fitness?category=${encodeURIComponent(
+      `${BASE_URL}/voyager/get-categorized-fitness?category=${encodeURIComponent(
         category
       )}`
     )

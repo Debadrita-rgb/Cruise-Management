@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "../../../../config";
 
 const TABS = ["Catering", "Stationary"];
 
@@ -59,7 +60,7 @@ const Cart = () => {
       const token = localStorage.getItem("token");
       const endpoint = serviceToEndpoint[tabName]?.get;
       if (!endpoint) return;
-      const res = await axios.get(`http://localhost:5000/voyager/${endpoint}`, {
+      const res = await axios.get(`${BASE_URL}/voyager/${endpoint}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCartItems(res.data.items || []);
@@ -81,7 +82,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `http://localhost:5000/voyager/${endpoint}`,
+        `${BASE_URL}/voyager/${endpoint}`,
         {
           orderId: item.orderId,
           itemId: item._id,
@@ -104,7 +105,7 @@ const Cart = () => {
     const endpoint = serviceToEndpoint[selectedTab]?.delete;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/voyager/${endpoint}`, {
+      await axios.delete(`${BASE_URL}/voyager/${endpoint}`, {
         data: { orderId, itemId },
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -120,7 +121,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5000/voyager/${endpoint}`,
+        `${BASE_URL}/voyager/${endpoint}`,
         { orderId, newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

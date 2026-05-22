@@ -4,7 +4,7 @@ import DynamicForm from "../../../../components/commonComponent/CrudComponent/Dy
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import BASE_URL from "../../../../../config";
 // MUI & Time Picker
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -60,11 +60,15 @@ const AddFitnessService = () => {
         equipmentItems,
       };
 
-      await axios.post("http://localhost:5000/admin/add-fitness", dataToSend, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.post(
+        `${BASE_URL}/admin/add-fitness`,
+        dataToSend,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       toast.success("Service added successfully!");
       navigate("/admin/booking/viewFitnessService");

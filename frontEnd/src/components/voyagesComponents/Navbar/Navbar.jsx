@@ -18,6 +18,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "./Navbar.css";
+import BASE_URL from "../../../../config";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -76,7 +77,7 @@ export default function Navbar() {
   //   const fetchcartNotificationCount = async () => {
   //     try {
   //       const res = await axios.get(
-  //         "http://localhost:5000/voyager/get-cartnotification-count",
+  //         "${BASE_URL}/voyager/get-cartnotification-count",
   //         {
   //           headers: { Authorization: `Bearer ${token}` },
   //         }
@@ -137,7 +138,7 @@ export default function Navbar() {
 
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        `http://localhost:5000/voyager/notifications`,
+        `${BASE_URL}/voyager/notifications`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -162,7 +163,7 @@ export default function Navbar() {
     if (hasNewNotification) {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        `http://localhost:5000/voyager/notifications/mark-read`,{},
+        `${BASE_URL}/voyager/notifications/mark-read`,{},
         {
           headers: { Authorization: `Bearer ${token}` },
         }

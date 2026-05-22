@@ -5,7 +5,7 @@ const jsonwebtoken = require("../middleware/auth")("ADMIN");
 const { generateToken, jwtAuthMiddleware } = require("../middleware/jwt");
 
 // Import your models (adjust paths as needed)
-const User = require("../models/User");
+const User = require("../models/user");
 const FoodItem = require("../models/FoodItem");
 const Category = require("../models/Category");
 const Stationary = require("../models/Stationary");
@@ -116,7 +116,7 @@ router.get("/dashboardData", jwtAuthMiddleware, async (req, res) => {
   }
 });
 
-router.get(`/get-saloncategory-active`, jwtAuthMiddleware, async (req, res) => {
+router.get(`/get-saloncategory-active`, async (req, res) => {
   try {
     const items = await Category.find({ isActive: true, type: "Salon" });
     res.json(items);
