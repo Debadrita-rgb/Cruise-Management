@@ -31,7 +31,7 @@ export const PartyhallFirst = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/voyager/get-partyHall`, {
+    fetch(`${BASE_URL}/voyager/get-partyHall`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

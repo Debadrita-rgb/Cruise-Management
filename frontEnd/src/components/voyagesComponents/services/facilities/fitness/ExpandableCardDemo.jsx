@@ -95,7 +95,7 @@ export default function ExpandableCardDemo({ item }) {
               {/* Close Button */}
               <button
                 onClick={() => setActive(null)}
-                className="absolute top-4 right-4 bg-white dark:bg-neutral-800 p-2 rounded-full shadow-md z-10"
+                className="absolute top-4 right-4 bg-white dark:bg-cyan-600 p-2 rounded-full shadow-md z-10"
               >
                 <CloseIcon />
               </button>
@@ -110,13 +110,13 @@ export default function ExpandableCardDemo({ item }) {
               </div>
 
               {/* Content */}
-              <div className="w-full md:w-1/2 p-6 overflow-y-auto space-y-4">
+              <div className="w-full md:w-1/2 p-6 overflow-y-auto space-y-4 bg-[#1b4c6d]">
                 <h2 className="text-2xl font-bold text-neutral-800 dark:text-white">
                   {active.servicename}
                 </h2>
 
                 <p
-                  className="text-neutral-600 dark:text-neutral-400"
+                  className="text-white"
                   dangerouslySetInnerHTML={{
                     __html: active.servicedescription,
                   }}
@@ -134,7 +134,7 @@ export default function ExpandableCardDemo({ item }) {
                 {/* Time Slots */}
                 {active.serviceslot?.length > 0 && (
                   <div>
-                    <h4 className="font-semibold mb-2 text-gray-700">
+                    <h4 className="font-semibold mb-2 text-white">
                       Available Time Slots
                     </h4>
                     <div className="flex flex-wrap gap-2">
@@ -193,7 +193,7 @@ export default function ExpandableCardDemo({ item }) {
             layoutId={`card-${item.servicename}`}
             key={`card-${item.servicename}`}
             onClick={() => setActive(item)}
-            className="p-4 flex flex-col md:flex-row justify-between items-center bg-transparent hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer group"
+            className="p-4 flex flex-col md:flex-row justify-between items-center bg-transparent hover:bg-neutral-50 dark:hover:bg-[#1b4c6d] rounded-xl cursor-pointer group"
           >
             <div className="flex gap-4 flex-col md:flex-row items-center">
               <motion.div layoutId={`image-${item.servicename}`}>

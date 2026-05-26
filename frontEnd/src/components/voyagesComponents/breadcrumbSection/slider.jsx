@@ -39,7 +39,7 @@ export function BackgroundBoxesDemo() {
       paragraph:
         "From catering to fitness centers, explore our wide range of onboard services.",
       image:
-        "https://cdn.promptsnapshot.com/portfolio/user/392db36b-f765-4b8b-80ca-4d8f265948b3/o9F257qo0jOhn09oCVQfdPdU6eZXcpVuDiLVpG4DpJU%3D.png",
+        "https://images.jdmagicbox.com/v2/comp/gwalior/p1/9999px751.x751.231012124944.t2p1/catalogue/looks-salon-chhetak-puri-gwalior-salons-bxmk1b455c.jpg",
     },
     "/services/facilities/fitness": {
       heading: "Our Premium Fitness Centre Services",

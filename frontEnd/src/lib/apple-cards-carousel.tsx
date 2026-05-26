@@ -275,7 +275,7 @@ const handleBookNow = async (movieId) => {
                 {/* Close Button */}
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="absolute top-4 right-4 bg-white dark:bg-neutral-800 p-2 rounded-full shadow-md z-10"
+                  className="absolute top-4 right-4 bg-cyan-500 p-2 rounded-full shadow-md z-10"
                 >
                   <CloseIcon />
                 </button>

@@ -8,7 +8,6 @@ const fitness = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const category = queryParams.get("category"); 
-  console.log(category);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -26,7 +25,6 @@ const fitness = () => {
       })
       .catch((err) => console.error("Fetch error:", err));
   }, [category]);
-  console.log(data);
   return (
     <>
       <BackgroundBoxesDemo />

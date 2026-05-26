@@ -21,7 +21,6 @@ export function SalonFirst() {
       })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
-console.log(categories)
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },

@@ -41,7 +41,7 @@ const VoyagerShowcaseSection = () => {
       image:
         "https://images.squarespace-cdn.com/content/v1/58471a2329687f12c60955a3/1709159979051-8UDTOGLV884UYMV5LW1T/fitness-center-design.jpg?format=1000w", // Gym
       color: "from-indigo-500 to-blue-300",
-      path: "/services/facilities/fitness",
+      path: "/services/facilities/fitnessCategory",
     },
     {
       title: "Party Hall",

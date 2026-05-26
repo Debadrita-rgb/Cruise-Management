@@ -136,7 +136,7 @@ router.get(`/get-moviecategory-active`, jwtAuthMiddleware, async (req, res) => {
   }
 });
 
-router.get(`/get-fitnesscategory-active`, jwtAuthMiddleware, async (req, res) => {
+router.get(`/get-fitnesscategory-active`, async (req, res) => {
     try {
       const items = await Category.find({ isActive: true, type: "Fitness" });
       res.json(items);

@@ -133,29 +133,70 @@ export default function Navbar() {
       disclosureButtonRef.current.click();
     }
   };
-  useEffect(() => {
-    const fetchNotifications = async () => {
+//   useEffect(() => {
 
-      const token = localStorage.getItem("token");
-      const res = await axios.get(
-        `${BASE_URL}/voyager/notifications`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+//       const token = localStorage.getItem("token");
+//         if (!token) return;
+//     const fetchNotifications = async () => {
+//       try {
+//         const res = await axios.get(`${BASE_URL}/voyager/notifications`, {
+//           headers: { Authorization: `Bearer ${token}` },
+//         });
+
+//         const data = await res.data;
+//         setNotifications(data);
+
+//         const hasUnread = data.some((n) => !n.isRead);
+//         setHasNewNotification(hasUnread);
+//       } catch (err) {console.error(
+//         "Notification fetch failed:",
+//         err.response?.data || err.message,
+//       );
+// }};
+
+//     fetchNotifications();
+
+//     const interval = setInterval(fetchNotifications, 10000); // every 10 sec
+//     return () => clearInterval(interval);
+//   }, []);
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (!token) return;
+
+  const fetchNotifications = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/voyager/notifications`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setNotifications(res.data);
+
+      const hasUnread = res.data.some((n) => !n.isRead);
+      setHasNewNotification(hasUnread);
+    } catch (err) {
+      console.error(
+        "Notification fetch failed:",
+        err.response?.data || err.message,
       );
 
-      const data = await res.data;
-      setNotifications(data);
+      if (err.response?.status === 403) {
+        localStorage.clear();
+        setIsLoggedIn(false);
+        navigate("/signin");
+      }
+    }
+  };
 
-      const hasUnread = data.some((n) => !n.isRead);
-      setHasNewNotification(hasUnread);
-    };
+  fetchNotifications();
 
-    fetchNotifications();
+  const interval = setInterval(fetchNotifications, 10000);
 
-    const interval = setInterval(fetchNotifications, 10000); // every 10 sec
-    return () => clearInterval(interval);
-  }, []);
+  return () => clearInterval(interval);
+}, [navigate]);
 
   const handleBellClick = async () => {
     setIsNotificationOpen(!isNotificationOpen);

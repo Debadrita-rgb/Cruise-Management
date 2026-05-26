@@ -2,6 +2,7 @@ import React from 'react'
 import { BackgroundBoxesDemo } from "../../../../../components/voyagesComponents/breadcrumbSection/slider";
 import { FitnessFirst } from "../../../../../components/voyagesComponents/services/facilities/fitness/FitnessFirst";
 import { useLocation } from "react-router-dom";
+
 const fitnesscategory = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
