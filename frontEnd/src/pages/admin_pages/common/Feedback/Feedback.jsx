@@ -29,9 +29,38 @@ const feedback = () => {
     Name: item.name,
     Email: item.email,
     id: item._id,
+    isActive: item.isActive,
     viewPath: `/admin/view-feedback-details/${item._id}`,
   }));
 
+  const handleToggleActive = async (id, isActive) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(
+        `${BASE_URL}/admin/toggle-contact-status/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ isActive }),
+        },
+      );
+
+      if (!res.ok) throw new Error("Toggle failed");
+
+      setFeedbackItems((prev) =>
+        prev.map((item) => (item._id === id ? { ...item, isActive } : item)),
+      );
+
+      toast.success(
+        `Feedback ${isActive ? "activated" : "deactivated"} successfully`,
+      );
+    } catch (err) {
+      console.error("Toggle failed:", err);
+    }
+  };
   
   return (
     <div className="p-6">
@@ -42,7 +71,8 @@ const feedback = () => {
         data={filteredItems}
         showAddButton={false}
         showActionColumn={true}
-        showActiveColumn={false}
+        showActiveColumn={true}
+        handleToggleActive={handleToggleActive}
       />
     </div>
   );

@@ -20,6 +20,7 @@ const Gallery = require("../models/Gallery");
 const Contact = require("../models/Contact");
 const Notification = require("../models/Notification");
 const Testimonial = require("../models/Testimonial");
+const Banner = require("../models/Banner");
 
 const serviceModels = {
   salon: BeautySalon,
@@ -770,6 +771,7 @@ generateCRUDRoutes("fitness", Fitness);
 generateCRUDRoutes("salon", BeautySalon);
 generateCRUDRoutes("movie", Moviehall);
 generateCRUDRoutes("testimonial", Testimonial);
+generateCRUDRoutes("contact", Contact);
 
 // Get booked seats for a movie for a given date and timeslot
 router.get(
@@ -1128,7 +1130,7 @@ router.post("/submit-contact", async (req, res) => {
       return res.status(400).json({ error: "All fields are required" });
     }
 
-    const newContact = new Contact({ name, email, message, status });
+    const newContact = new Contact({ name, email, message, status, isActive: false });
     await newContact.save();
 
     let responseMessage = "";
@@ -1174,6 +1176,26 @@ router.post("/submit-testimonial", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.get("/banner/:pageType", async (req, res) => {
+  try {
+    const banner = await Banner.findOne({
+      page_type: req.params.pageType,
+      isActive: true,
+    });
+
+    if (!banner) {
+      return res.status(404).json({
+        message: "Banner not found",
+      });
+    }
+    res.status(200).json(banner);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
   }
 });
 

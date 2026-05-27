@@ -39,6 +39,11 @@ import AdminLayout from "./components/layout/admin/AdminLayout";
 import AdminDashboard from "./pages/admin_pages/AdminDashboard/AdminDashboard.jsx";
 import Facilities from "./pages/admin_pages/Facilities/Facilities.jsx";
 
+//Banner
+import AdminBanner from "./pages/admin_pages/common/Banner/viewBanner.jsx";
+import AdminAddBanner from "./pages/admin_pages/common/Banner/addBanner.jsx";
+import AdmineditBanner from "./pages/admin_pages/common/Banner/editBanner.jsx";
+
 //booking Salon Service
 import ViewSalonService from "./pages/admin_pages/Booking/Salon/viewSalonService.jsx";
 import AdminaddSalonService from "./pages/admin_pages/Booking/Salon/addSalonService.jsx";
@@ -224,6 +229,10 @@ const App = () => {
                 path="services/catering/addCatering"
                 element={<AdminaddCatering />}
               />
+              {/* Banner */}
+              <Route path="view-all-banner" element={<AdminBanner />} />
+              <Route path="add-banner" element={<AdminAddBanner />} />
+              <Route path="edit-banner/:id" element={<AdmineditBanner />} />
               <Route
                 path="services/catering/editCatering/:id"
                 element={<AdmineditCatering />}

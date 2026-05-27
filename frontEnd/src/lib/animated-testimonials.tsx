@@ -45,7 +45,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
-                  key={testimonial.image}
+                  key={testimonial._id || index}
                   initial={{
                     opacity: 0,
                     scale: 0.9,
@@ -75,7 +75,10 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
                   className="absolute inset-0 origin-bottom"
                 >
                   <img
-                    src={testimonial.profileimage}
+                    src={
+                      testimonial.profileimage ||
+                      "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    }
                     alt={testimonial.name}
                     width={500}
                     height={500}

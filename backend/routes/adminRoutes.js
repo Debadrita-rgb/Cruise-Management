@@ -10,6 +10,7 @@ const FoodItem = require("../models/FoodItem");
 const Category = require("../models/Category");
 const Stationary = require("../models/Stationary");
 const Moviehall = require("../models/Moviehall");
+const Banner = require("../models/Banner");
 const BeautySalon = require("../models/BeautySalon");
 const Fitness = require("../models/Fitness");
 const PartyHall = require("../models/PartyHall");
@@ -293,6 +294,7 @@ generateCRUDRoutes("gallery", Gallery);
 generateCRUDRoutes("contact", Contact);
 generateCRUDRoutes("category", Category);
 generateCRUDRoutes("testimonial", Testimonial);
+generateCRUDRoutes("banner", Banner);
 
 router.get(`/get-fullcontact-details`, jwtAuthMiddleware, async (req, res) => {
   try {

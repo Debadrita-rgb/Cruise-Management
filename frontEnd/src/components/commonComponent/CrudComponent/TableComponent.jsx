@@ -15,6 +15,7 @@ const TableComponent = ({
   showAddButton = true,
   showActiveColumn = true,
   showActionColumn = true,
+  showDeleteButton = true,
 }) => {
   const navigate = useNavigate();
 
@@ -108,13 +109,15 @@ const TableComponent = ({
                                 <FaEdit />
                               </Link>
                             )}
-                            <button
-                              onClick={() => handleDelete(row.id)}
-                              className="text-red-600 hover:text-red-800 cursor-pointer"
-                              title="Delete"
-                            >
-                              <FaTrash />
-                            </button>
+                            {showDeleteButton && handleDelete && (
+                              <button
+                                onClick={() => handleDelete(row.id)}
+                                className="text-red-600 hover:text-red-800 cursor-pointer"
+                                title="Delete"
+                              >
+                                <FaTrash />
+                              </button>
+                            )}
                           </>
                         )}
                       </div>

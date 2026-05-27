@@ -1,98 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import BASE_URL from "../../../../config";
 
 export function BackgroundBoxesDemo() {
-
   const location = useLocation();
 
-  const contentMap = {
-    "/contact": {
-      heading: "Get in Touch With Us",
-      paragraph:
-        "We’re here to help. Reach out for support, inquiries, or partnerships.",
-    },
-    "/testimonial": {
-      heading: "Get in Touch With Us",
-      paragraph:
-        "We’re here to help. Reach out for support, inquiries, or partnerships.",
-    },
-    "/feedback": {
-      heading: "Get in Touch With Us",
-      paragraph:
-        "We’re here to help. Reach out for support, inquiries, or partnerships.",
-    },
-    "/about": {
-      heading: "About Our Journey",
-      paragraph:
-        "Discover our mission, team, and the story behind our cruise solutions.",
-    },
-    "/services/facilities/movies": {
-      heading: "Our Premium Movies Services",
-      paragraph:
-        "From catering to fitness centers, explore our wide range of onboard services.",
-      image:
-        "https://assets.cntraveller.in/photos/64f83b063dca3e9451b2999c/master/w_1600%2Cc_limit/Disney%2520Treasure%2520-%2520Sarabi.jpg",
-      textColor: "#681F19",
-    },
-    "/services/facilities/salon": {
-      heading: "Our Premium salon Services",
-      paragraph:
-        "From catering to fitness centers, explore our wide range of onboard services.",
-      image:
-        "https://images.jdmagicbox.com/v2/comp/gwalior/p1/9999px751.x751.231012124944.t2p1/catalogue/looks-salon-chhetak-puri-gwalior-salons-bxmk1b455c.jpg",
-    },
-    "/services/facilities/fitness": {
-      heading: "Our Premium Fitness Centre Services",
-      paragraph:
-        "From catering to fitness centers, explore our wide range of onboard services.",
-      image:
-        "https://www.cruisedeckplans.com/DP/deckpictures/175/org/LibDec-2939-1693001825.jpg",
-    },
-    "/services/facilities/partyhall": {
-      heading: "Our Premium Party Hall Centre Services",
-      paragraph:
-        "From catering to fitness centers, explore our wide range of onboard services.",
-      image:
-        "https://www.carnival.com/-/media/images/ships/vx/open-for-sale/carnival-venezia-frizzante-mobile-hero-2.jpg",
-    },
-    "/services/catering": {
-      heading: "Our Premium Catering Services",
-      paragraph:
-        "From catering to fitness centers, explore our wide range of onboard services.",
-      image:
-        "https://previews.123rf.com/images/marina113/marina1132207/marina113220700464/188840221-dining-room-buffet-aboard-the-abstract-luxury-cruise-ship-healthy-breakfast-at-modern-liner-concept.jpg",
-    },
-    "/services/stationary": {
-      heading: "Our Premium Stationary Services",
-      paragraph:
-        "From catering to fitness centers, explore our wide range of onboard services.",
-      image:
-        "https://rare-gallery.com/thumbs/865036-School-Stationery-Scissors-Pencils-Ballpoint-pen.jpg",
-    },
-    "/faq": {
-      heading: "Frequently Ask Question",
-    },
+  const [banner, setBanner] = useState(null);
+
+  useEffect(() => {
+    fetchBanner();
+  }, [location.pathname]);
+
+  const fetchBanner = async () => {
+    try {
+      let pageType = location.pathname.replace("/", "");
+      // for nested routes
+      if (location.pathname.includes("/services/facilities/movies")) {
+        pageType = "movies";
+      }
+
+      if (location.pathname.includes("/services/facilities/salonCategory")) {
+        pageType = "salonCategory";
+      }
+
+      if (location.pathname.includes("/services/facilities/fitnessCategory")) {
+        pageType = "fitnessCategory";
+      }
+
+      if (location.pathname.includes("/services/facilities/partyhall")) {
+        pageType = "partyhall";
+      }
+
+      if (location.pathname.includes("/services/catering")) {
+        pageType = "catering";
+      }
+
+      if (location.pathname.includes("/services/stationary")) {
+        pageType = "stationary";
+      }
+
+      const response = await axios.get(
+        `${BASE_URL}/voyager/banner/${pageType}`,
+      );
+
+      setBanner(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  // Fallback for dynamic paths like /services/catering
-  const matchedPath =
-    Object.keys(contentMap).find((key) => location.pathname.startsWith(key)) ||
-    "/";
-
-  const {
-    heading,
-    paragraph,
-    image,
-    textColor = "#E1E8ED",
-  } = contentMap[matchedPath];
-
   return (
     <div
       className="h-96 relative w-full overflow-hidden bg-cover bg-center flex items-center justify-center rounded-lg transition-all duration-500"
       style={{
         backgroundImage: `url('${
-          image ||
-          "https://images.pexels.com/photos/18395182/pexels-photo-18395182/free-photo-of-a-large-cruise-ship-on-the-sea.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          banner?.page_banner_image ||
+          "https://images.pexels.com/photos/18395182/pexels-photo-18395182/free-photo-of-a-large-cruise-ship-on-the-sea.jpeg"
         }')`,
       }}
     >
@@ -102,21 +65,21 @@ export function BackgroundBoxesDemo() {
             <h1
               className="text-3xl md:text-5xl font-bold"
               style={{
-                color: textColor,
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                color: "#E1E8ED",
+                textShadow: "2px 2px 4px rgba(0,0,0,0.6)",
               }}
             >
-              {heading}
+              {banner?.heading}
             </h1>
+
             <p
-              className="mt-3 text-md md:text-lg"
+              className="mt-3 text-md md:text-lg font-bold"
               style={{
-                fontWeight: 'bold',
-                color: textColor,
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                color: "#E1E8ED",
+                textShadow: "2px 2px 4px rgba(0,0,0,0.6)",
               }}
             >
-              {paragraph}
+              {banner?.paragraph}
             </p>
           </div>
         </div>

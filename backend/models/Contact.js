@@ -6,6 +6,7 @@ const ContactSchema = new mongoose.Schema({
   email: String,
   createdAt: { type: Date, default: Date.now },
   status: { type: String },
+  isActive:{ type: Boolean, default: false }
 });
 
 module.exports = mongoose.model("Contact", ContactSchema);

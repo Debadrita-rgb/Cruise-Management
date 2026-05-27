@@ -51,6 +51,9 @@ const AdminNavbar = ({ toggleSidebar, isSidebarOpen }) => {
     ) {
       return "Edit Catering";
     }
+    if (location.pathname.startsWith("/admin/edit-banner/")) {
+      return "Edit banner";
+    }
     if (location.pathname.startsWith("/admin/booking/editMoviehallService/")) {
       return "Edit Moviehall Service";
     }
@@ -93,6 +96,10 @@ const AdminNavbar = ({ toggleSidebar, isSidebarOpen }) => {
         return "View User";
       case "/admin/add-user":
         return "Add User";
+      case "/admin/view-all-banner":
+        return "View Banner";
+      case "/admin/add-banner":
+        return "Add Banner";
       case "/admin/view-all-category":
         return "View Category";
       case "/admin/add-category":

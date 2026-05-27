@@ -7,7 +7,7 @@ import { BiCategory } from "react-icons/bi";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs"; // Dropdown icons
 import { RiGalleryView } from "react-icons/ri";
 import { BsFillPersonLinesFill } from "react-icons/bs";
-import { MdFeedback } from "react-icons/md";
+import { MdFeedback, MdPhotoLibrary } from "react-icons/md";
 import { BiCommentDetail } from "react-icons/bi";
 
 export default function AdminSidebar({ isOpen, toggleSidebar }) {
@@ -66,6 +66,13 @@ export default function AdminSidebar({ isOpen, toggleSidebar }) {
 
             {miscOpen && (
               <div className="ml-6 space-y-2 mt-2">
+                <Link
+                  to="/admin/view-all-banner"
+                  className="block items-center p-2 ps-3 rounded transition duration-200 text-white hover:text-[#1b4c6d] hover:bg-gray-100 hover:rounded-2xl"
+                >
+                  <MdPhotoLibrary className="inline-block mr-2" />
+                  View Banner
+                </Link>
                 <Link
                   to="/admin/view-gallery"
                   className="block items-center p-2 ps-3 rounded transition duration-200 text-white hover:text-[#1b4c6d] hover:bg-gray-100 hover:rounded-2xl"
