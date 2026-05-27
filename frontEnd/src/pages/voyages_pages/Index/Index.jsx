@@ -5,7 +5,6 @@ import WhyChooseUs from "../../../components/voyagesComponents/WhyChooseUs/WhyCh
 import { AnimatedTestimonialsDemo } from "../../../components/voyagesComponents/TestimonialSection/TestimonialSection";
 import CruiseGallery from "../../../components/voyagesComponents/CruiseGallery/CruiseGallery";
 
-
 const VoyageHomePage = () => {
   return (
     <>

@@ -36,6 +36,8 @@ app.use("/manager", managerRoutes);
 app.use("/headcook", headcookRoutes);  
 app.use("/supervisor", supervisorRoutes);  
 app.use("/common", commonRoutes);
+app.use("/chatbot", require("./routes/chatbot"));
+
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on port 5000`);

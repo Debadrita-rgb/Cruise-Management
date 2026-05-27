@@ -29,7 +29,7 @@ const navigation = [
     children: [
       { name: "Catering", href: "/services/catering" },
       { name: "Stationary", href: "/services/stationary" },
-      { name: "Movie Tickets", href: "/services/facilities/movies" },
+      { name: "Movie", href: "/services/facilities/movies" },
       { name: "Beauty Salon", href: "/services/facilities/salonCategory" },
       { name: "Fitness Centre", href: "/services/facilities/fitnessCategory" },
       { name: "Party Hall", href: "/services/facilities/partyhall" },

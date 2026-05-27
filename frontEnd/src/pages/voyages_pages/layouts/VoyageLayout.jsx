@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../../../components/voyagesComponents/Navbar/Navbar"; // update path as needed
 import Footer from "../../../components/voyagesComponents/Footer/Footer"; // make sure you create this component
+import Chatbot from "../../../components/voyagesComponents/Chatbot/Chatbot"; 
 
 const VoyageLayout = ({ children }) => {
   return (
@@ -10,6 +11,8 @@ const VoyageLayout = ({ children }) => {
       <main className="flex-1">
         <Outlet />
       </main>
+      <Chatbot />
+
       <Footer />
     </div>
   );
